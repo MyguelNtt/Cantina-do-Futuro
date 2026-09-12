@@ -57,7 +57,6 @@ body{
 .card{
 
     width:100%;
-
     max-width:470px;
 
     background:white;
@@ -89,7 +88,6 @@ body{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     font-size:38px;
@@ -114,12 +112,15 @@ h1{
 
 }
 
+
+/* =========================================
+   LOGIN
+========================================= */
+
 .opcoes-login{
 
     display:flex;
-
     flex-direction:column;
-
     gap:15px;
 
 }
@@ -177,6 +178,11 @@ h1{
     font-size:13px;
 
 }
+
+
+/* =========================================
+   SÉRIES
+========================================= */
 
 .opcoes-serie{
 
@@ -242,6 +248,11 @@ h1{
 
 }
 
+
+/* =========================================
+   SALAS
+========================================= */
+
 .salas{
 
     display:grid;
@@ -294,6 +305,11 @@ h1{
     border-color:#3b72e8;
 
 }
+
+
+/* =========================================
+   INPUTS / BOTÕES
+========================================= */
 
 input{
 
@@ -368,6 +384,11 @@ button:hover{
 
 }
 
+
+/* =========================================
+   CONFIRMAÇÃO
+========================================= */
+
 .confirmacao-usuario{
 
     padding:20px;
@@ -409,6 +430,112 @@ button:hover{
     color:#777;
 
     font-size:15px;
+
+}
+
+
+/* =========================================
+   POPUP / AVISO
+========================================= */
+
+#popupAviso{
+
+    position:fixed;
+
+    top:25px;
+
+    left:50%;
+
+    transform:
+        translate(-50%,-150px);
+
+    width:calc(100% - 30px);
+
+    max-width:430px;
+
+    padding:17px 20px;
+
+    border-radius:17px;
+
+    background:#22c55e;
+
+    color:white;
+
+    box-shadow:
+        0 12px 35px rgba(0,0,0,.20);
+
+    z-index:99999;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:13px;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+
+}
+
+#popupAviso.visivel{
+
+    transform:
+        translate(-50%,0);
+
+    opacity:1;
+
+}
+
+.popup-icone{
+
+    width:43px;
+    height:43px;
+
+    min-width:43px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.2);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:23px;
+
+}
+
+.popup-texto{
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    line-height:1.35;
+
+}
+
+#popupAviso.erro{
+
+    background:#ef4444;
+
+}
+
+#popupAviso.info{
+
+    background:#3b72e8;
+
+}
+
+#popupAviso.atencao{
+
+    background:#f97316;
 
 }
 
@@ -461,7 +588,6 @@ button:hover{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     font-size:22px;
@@ -547,7 +673,6 @@ button:hover{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     font-size:25px;
@@ -640,7 +765,6 @@ button:hover{
     display:flex;
 
     align-items:center;
-
     justify-content:center;
 
     font-size:28px;
@@ -920,7 +1044,7 @@ h2{
 
 
 /* =========================================
-   ITENS DE SALGADOS E BEBIDAS
+   SALGADOS / BEBIDAS
 ========================================= */
 
 .item-salgado,
@@ -948,14 +1072,8 @@ h2{
 
 
 /* =========================================
-   CARDÁPIO DA MERENDA
+   MERENDA
 ========================================= */
-
-/*
-   IMPORTANTE:
-   Os itens da merenda não têm cursor:pointer
-   e não possuem onclick.
-*/
 
 .cardapio-merenda-item{
 
@@ -972,12 +1090,6 @@ h2{
     cursor:default;
 
     user-select:none;
-
-}
-
-.cardapio-merenda-item:hover{
-
-    background:#f9fafb;
 
 }
 
@@ -1266,7 +1378,6 @@ h2{
     .info-usuario-topo{
 
         top:10px;
-
         left:10px;
 
         padding:8px 11px;
@@ -1346,13 +1457,35 @@ h2{
 
 </head>
 
-
 <body>
 
 
-<!-- ==================================================
+<!-- =========================================
+     POPUP
+========================================= -->
+
+<div id="popupAviso">
+
+    <div
+        id="popupIcone"
+        class="popup-icone"
+    >
+        ✔️
+    </div>
+
+    <div
+        id="popupTexto"
+        class="popup-texto"
+    >
+        Mensagem
+    </div>
+
+</div>
+
+
+<!-- =========================================
      INFORMAÇÕES DO USUÁRIO
-================================================== -->
+========================================= -->
 
 <div
     id="infoUsuarioTopo"
@@ -1395,9 +1528,9 @@ Sala: -
 </div>
 
 
-<!-- ==================================================
+<!-- =========================================
      BOTÃO PERFIL
-================================================== -->
+========================================= -->
 
 <button
     id="botaoPerfil"
@@ -1410,9 +1543,9 @@ Sala: -
 </button>
 
 
-<!-- ==================================================
+<!-- =========================================
      PAINEL PERFIL
-================================================== -->
+========================================= -->
 
 <div
     id="overlayPerfil"
@@ -1518,9 +1651,9 @@ Aluno
 </div>
 
 
-<!-- ==================================================
+<!-- =========================================
      TELA INICIAL
-================================================== -->
+========================================= -->
 
 <section
     id="telaInicial"
@@ -1542,7 +1675,6 @@ Como deseja acessar o sistema?
 </p>
 
 <div class="opcoes-login">
-
 
 <div
     class="login"
@@ -1590,9 +1722,9 @@ Acesse utilizando sua sala.
 </section>
 
 
-<!-- ==================================================
+<!-- =========================================
      LOGIN PROFESSOR
-================================================== -->
+========================================= -->
 
 <section
     id="telaProfessorCodigo"
@@ -1637,9 +1769,9 @@ Continuar
 </section>
 
 
-<!-- ==================================================
+<!-- =========================================
      NOME PROFESSOR
-================================================== -->
+========================================= -->
 
 <section
     id="telaNomeProfessor"
@@ -1684,9 +1816,9 @@ Entrar
 </section>
 
 
-<!-- ==================================================
+<!-- =========================================
      SÉRIES
-================================================== -->
+========================================= -->
 
 <section
     id="telaSeries"
@@ -1784,9 +1916,9 @@ Primeiro, escolha a série da sua sala.
 </section>
 
 
-<!-- ==================================================
+<!-- =========================================
      SALAS
-================================================== -->
+========================================= -->
 
 <section
     id="telaSalas"
@@ -1828,9 +1960,9 @@ Selecione uma sala.
 </section>
 
 
-<!-- ==================================================
+<!-- =========================================
      NOME ALUNO
-================================================== -->
+========================================= -->
 
 <section
     id="telaNome"
@@ -1875,9 +2007,9 @@ Continuar
 </section>
 
 
-<!-- ==================================================
+<!-- =========================================
      CONFIRMAÇÃO ALUNO
-================================================== -->
+========================================= -->
 
 <section
     id="telaConfirmacao"
@@ -1937,9 +2069,9 @@ Entrar
 </section>
 
 
-<!-- ==================================================
+<!-- =========================================
      CARDÁPIO
-================================================== -->
+========================================= -->
 
 <section
     id="telaCardapio"
@@ -1961,11 +2093,7 @@ Faça sua escolha para hoje!
 
 </header>
 
-
 <div class="content">
-
-
-<!-- PERGUNTA -->
 
 <p
     id="perguntaCardapio"
@@ -1975,9 +2103,7 @@ Você vai almoçar na escola hoje?
 </p>
 
 
-<!-- =========================================
-     MERENDA ALUNO
-========================================= -->
+<!-- MERENDA -->
 
 <div
     id="cardapioMerenda"
@@ -1988,41 +2114,26 @@ Você vai almoçar na escola hoje?
 🍛 Cardápio da Merenda Escolar
 </h2>
 
-
 <div class="cardapio-merenda-item">
-
 🍚 <strong>Arroz</strong>
-
 </div>
 
-
 <div class="cardapio-merenda-item">
-
 🫘 <strong>Feijão</strong>
-
 </div>
 
-
 <div class="cardapio-merenda-item">
-
 🍗 <strong>Frango em Molho</strong>
-
 </div>
-
 
 <div class="cardapio-merenda-item">
-
 🥗 <strong>Salada</strong>
+</div>
 
 </div>
 
 
-</div>
-
-
-<!-- =========================================
-     BOTÕES SIM / NÃO
-========================================= -->
+<!-- SIM / NÃO -->
 
 <div class="botoes">
 
@@ -2043,9 +2154,7 @@ Você vai almoçar na escola hoje?
 </div>
 
 
-<!-- =========================================
-     ESCOLHA ALUNO
-========================================= -->
+<!-- ESCOLHA ALUNO -->
 
 <div
     id="secaoEscolha"
@@ -2073,9 +2182,7 @@ Você vai almoçar na escola hoje?
 </div>
 
 
-<!-- =========================================
-     SALGADOS
-========================================= -->
+<!-- SALGADOS -->
 
 <div
     id="secaoSalgados"
@@ -2086,10 +2193,8 @@ Você vai almoçar na escola hoje?
 🥪 Escolha seus Salgados
 </h2>
 
-
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🥩 Coxinha de Carne
 
 <div class="quantidade">
@@ -2097,13 +2202,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🍗 Coxinha de Frango
 
 <div class="quantidade">
@@ -2111,13 +2213,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🍕 Risole de Pizza
 
 <div class="quantidade">
@@ -2125,13 +2224,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🥩 Risole de Carne
 
 <div class="quantidade">
@@ -2139,13 +2235,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🌾 Quibe
 
 <div class="quantidade">
@@ -2153,13 +2246,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🥩 Pastelão de Carne
 
 <div class="quantidade">
@@ -2167,13 +2257,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🥩 Croquete de Carne Seca
 
 <div class="quantidade">
@@ -2181,13 +2268,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🌶️ Bola de Calabresa
 
 <div class="quantidade">
@@ -2195,13 +2279,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🧀 Pão de Queijo
 
 <div class="quantidade">
@@ -2209,13 +2290,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🥪 Bauru de Presunto e Queijo
 
 <div class="quantidade">
@@ -2223,13 +2301,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🌶️ Bauru de Calabresa
 
 <div class="quantidade">
@@ -2237,13 +2312,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🍔 Hambúrguer com Queijo
 
 <div class="quantidade">
@@ -2251,13 +2323,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🌭 Doguinho
 
 <div class="quantidade">
@@ -2265,13 +2334,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🧀🍔 Hambúrguer de Cheddar
 
 <div class="quantidade">
@@ -2279,13 +2345,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🥙 Esfiha de Carne
 
 <div class="quantidade">
@@ -2293,13 +2356,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🌾🧀 Quibe com Queijo
 
 <div class="quantidade">
@@ -2307,13 +2367,10 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-salgado"
 onclick="toggleItem(this,'salgado')">
-
 🍗 Risole de Frango com Catupiry
 
 <div class="quantidade">
@@ -2321,15 +2378,12 @@ onclick="toggleItem(this,'salgado')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
 
 </div>
 
 
-<!-- =========================================
-     BEBIDAS
-========================================= -->
+<!-- BEBIDAS -->
 
 <div
     id="secaoBebidas"
@@ -2340,10 +2394,8 @@ onclick="toggleItem(this,'salgado')">
 🥤 Escolha suas Bebidas
 </h2>
 
-
 <div class="opcao item-bebida"
 onclick="toggleItem(this,'bebida')">
-
 🥤 Coca-Cola
 
 <div class="quantidade">
@@ -2351,13 +2403,10 @@ onclick="toggleItem(this,'bebida')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-bebida"
 onclick="toggleItem(this,'bebida')">
-
 🥤 Guaraná Antarctica
 
 <div class="quantidade">
@@ -2365,13 +2414,10 @@ onclick="toggleItem(this,'bebida')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-bebida"
 onclick="toggleItem(this,'bebida')">
-
 🥤 Pepsi
 
 <div class="quantidade">
@@ -2379,13 +2425,10 @@ onclick="toggleItem(this,'bebida')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-bebida"
 onclick="toggleItem(this,'bebida')">
-
 🥤 Fanta Laranja
 
 <div class="quantidade">
@@ -2393,13 +2436,10 @@ onclick="toggleItem(this,'bebida')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-bebida"
 onclick="toggleItem(this,'bebida')">
-
 🥤 Fanta Uva
 
 <div class="quantidade">
@@ -2407,13 +2447,10 @@ onclick="toggleItem(this,'bebida')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-bebida"
 onclick="toggleItem(this,'bebida')">
-
 🥤 Sprite
 
 <div class="quantidade">
@@ -2421,13 +2458,10 @@ onclick="toggleItem(this,'bebida')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-bebida"
 onclick="toggleItem(this,'bebida')">
-
 🥤 Kuat
 
 <div class="quantidade">
@@ -2435,13 +2469,10 @@ onclick="toggleItem(this,'bebida')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-bebida"
 onclick="toggleItem(this,'bebida')">
-
 💧 Água Mineral
 
 <div class="quantidade">
@@ -2449,13 +2480,10 @@ onclick="toggleItem(this,'bebida')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-bebida"
 onclick="toggleItem(this,'bebida')">
-
 🧃 Suco de Laranja
 
 <div class="quantidade">
@@ -2463,13 +2491,10 @@ onclick="toggleItem(this,'bebida')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-bebida"
 onclick="toggleItem(this,'bebida')">
-
 🧃 Suco de Maracujá
 
 <div class="quantidade">
@@ -2477,13 +2502,10 @@ onclick="toggleItem(this,'bebida')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
-
 
 <div class="opcao item-bebida"
 onclick="toggleItem(this,'bebida')">
-
 🥛 Toddynho
 
 <div class="quantidade">
@@ -2491,15 +2513,12 @@ onclick="toggleItem(this,'bebida')">
 <span>1</span>
 <button onclick="alterarQuantidade(event,this,1)">+</button>
 </div>
-
 </div>
 
 </div>
 
 
-<!-- =========================================
-     NÃO VOU COMER
-========================================= -->
+<!-- NÃO VOU COMER -->
 
 <div
     id="secaoNada"
@@ -2512,17 +2531,13 @@ onclick="toggleItem(this,'bebida')">
     class="nada-opcao"
     onclick="selecionarNada()"
 >
-
 🚫 Não vou comer ou trouxe marmita
-
 </div>
 
 </div>
 
 
-<!-- =========================================
-     RESUMO
-========================================= -->
+<!-- RESUMO -->
 
 <div
     id="resumo"
@@ -2532,7 +2547,6 @@ onclick="toggleItem(this,'bebida')">
 <h3>
 📋 Resumo do Pedido
 </h3>
-
 
 <div
     id="resumoSalgados"
@@ -2549,7 +2563,6 @@ Nenhum escolhido
 
 </div>
 
-
 <div
     id="resumoBebidas"
     class="grupo-resumo"
@@ -2565,7 +2578,6 @@ Nenhuma escolhida
 
 </div>
 
-
 <button
     id="btnEnviarPedido"
     class="btn-enviar"
@@ -2577,9 +2589,7 @@ Nenhuma escolhida
 </div>
 
 
-<!-- =========================================
-     ESCOLHA NADA
-========================================= -->
+<!-- ESCOLHA NADA -->
 
 <div
     id="escolhaNada"
@@ -2603,14 +2613,11 @@ Nenhuma escolhida
 
 </div>
 
-
 </div>
 
 </div>
 
 </section>
-
-
 <script>
 
 /* =========================================
@@ -2635,10 +2642,86 @@ let modoFinalizado = false;
 
 
 /* =========================================
+   POPUP
+========================================= */
+
+let popupTimer = null;
+
+function mostrarPopup(
+    mensagem,
+    tipo="sucesso",
+    icone="✔️"
+){
+
+    const popup =
+        document.getElementById("popupAviso");
+
+    const texto =
+        document.getElementById("popupTexto");
+
+    const iconeElemento =
+        document.getElementById("popupIcone");
+
+
+    if(popupTimer){
+
+        clearTimeout(popupTimer);
+
+    }
+
+
+    popup.classList.remove(
+        "erro",
+        "info",
+        "atencao"
+    );
+
+
+    if(tipo==="erro"){
+
+        popup.classList.add("erro");
+
+    }
+
+    else if(tipo==="info"){
+
+        popup.classList.add("info");
+
+    }
+
+    else if(tipo==="atencao"){
+
+        popup.classList.add("atencao");
+
+    }
+
+
+    texto.textContent = mensagem;
+
+    iconeElemento.textContent = icone;
+
+
+    popup.classList.add("visivel");
+
+
+    popupTimer =
+        setTimeout(function(){
+
+            popup.classList.remove(
+                "visivel"
+            );
+
+        },3500);
+
+}
+
+
+/* =========================================
    CÓDIGO PROFESSOR
 ========================================= */
 
-const codigoProfessorCorreto = "Prof@2026";
+const codigoProfessorCorreto =
+    "Prof@2026";
 
 
 /* =========================================
@@ -2648,19 +2731,19 @@ const codigoProfessorCorreto = "Prof@2026";
 const salas = {
 
 "1":[
-"1A",
-"1B",
-"1C"
+    "1A",
+    "1B",
+    "1C"
 ],
 
 "2":[
-"2ªA",
-"2ªB"
+    "2ªA",
+    "2ªB"
 ],
 
 "3":[
-"3ªA",
-"3ªB"
+    "3ªA",
+    "3ªB"
 ]
 
 };
@@ -2698,13 +2781,19 @@ const telas = [
 
 ];
 
+
 telas.forEach(function(tela){
 
-document.getElementById(tela).style.display="none";
+document
+.getElementById(tela)
+.style.display="none";
 
 });
 
-document.getElementById(id).style.display="flex";
+
+document
+.getElementById(id)
+.style.display="flex";
 
 }
 
@@ -2730,9 +2819,14 @@ function entrarProfessor(){
 
 cargoSelecionado="Professor";
 
-document.getElementById("codigoProfessor").value="";
+document
+.getElementById("codigoProfessor")
+.value="";
 
-mostrarTela("telaProfessorCodigo");
+mostrarTela(
+    "telaProfessorCodigo"
+);
+
 
 setTimeout(function(){
 
@@ -2756,9 +2850,14 @@ document
 .getElementById("codigoProfessor")
 .value;
 
+
 if(codigo !== codigoProfessorCorreto){
 
-alert("❌ Código de acesso incorreto.");
+mostrarPopup(
+    "Código de acesso incorreto.",
+    "erro",
+    "❌"
+);
 
 document
 .getElementById("codigoProfessor")
@@ -2772,11 +2871,25 @@ return;
 
 }
 
+
+/* PIN CORRETO */
+
+mostrarPopup(
+    "PIN correto! Acesso de professor liberado.",
+    "sucesso",
+    "🔐"
+);
+
+
 document
 .getElementById("nomeProfessor")
 .value="";
 
-mostrarTela("telaNomeProfessor");
+
+mostrarTela(
+    "telaNomeProfessor"
+);
+
 
 setTimeout(function(){
 
@@ -2796,53 +2909,77 @@ document
 function verificarNomeProfessor(){
 
 const campo =
-document.getElementById("nomeProfessor");
+document.getElementById(
+    "nomeProfessor"
+);
 
 const nome =
 campo.value.trim();
 
+
 if(nome===""){
 
-alert("Digite seu nome e sobrenome.");
+mostrarPopup(
+    "Digite seu nome e sobrenome.",
+    "erro",
+    "⚠️"
+);
 
 campo.focus();
 
 return;
 
 }
+
 
 const partes =
 nome.split(/\s+/);
 
+
 if(partes.length<2){
 
-alert("Digite seu nome e sobrenome.");
+mostrarPopup(
+    "Digite seu nome e sobrenome.",
+    "erro",
+    "⚠️"
+);
 
 campo.focus();
 
 return;
 
 }
+
 
 if(nome.length<5){
 
-alert("O nome informado é muito curto.");
+mostrarPopup(
+    "O nome informado é muito curto.",
+    "erro",
+    "⚠️"
+);
 
 campo.focus();
 
 return;
 
 }
+
 
 const nomeMinusculo =
 nome.toLowerCase();
 
+
 for(let palavra of palavrasImproprias){
 
-if(nomeMinusculo.includes(palavra)){
+if(
+    nomeMinusculo.includes(palavra)
+){
 
-alert(
-"⚠️ Esse nome não pode ser utilizado. Por favor, informe um nome apropriado."
+mostrarPopup(
+    "Esse nome não pode ser utilizado.",
+    "erro",
+    "🚫"
 );
 
 campo.value="";
@@ -2855,15 +2992,27 @@ return;
 
 }
 
+
 nomeSelecionado=nome;
 
 cargoSelecionado="Professor";
 
+
 atualizarPerfilUsuario();
+
 
 configurarCardapioProfessor();
 
+
 mostrarTela("telaCardapio");
+
+
+mostrarPopup(
+    "Você "+nomeSelecionado+
+    " entrou como professor!",
+    "sucesso",
+    "👨‍🏫"
+);
 
 }
 
@@ -2876,29 +3025,42 @@ function abrirSalas(serie){
 
 serieSelecionada=serie;
 
+
 const lista =
-document.getElementById("listaSalas");
+document.getElementById(
+    "listaSalas"
+);
+
 
 lista.innerHTML="";
 
-salas[serie].forEach(function(sala){
+
+salas[serie].forEach(
+function(sala){
 
 const botao =
 document.createElement("div");
+
 
 botao.className="sala";
 
 botao.textContent=sala;
 
+
 botao.onclick=function(){
 
-selecionarSala(sala,botao);
+selecionarSala(
+    sala,
+    botao
+);
 
 };
+
 
 lista.appendChild(botao);
 
 });
+
 
 mostrarTela("telaSalas");
 
@@ -2909,19 +3071,29 @@ mostrarTela("telaSalas");
    SELECIONAR SALA
 ========================================= */
 
-function selecionarSala(sala,elemento){
+function selecionarSala(
+    sala,
+    elemento
+){
 
 salaSelecionada=sala;
+
 
 document
 .querySelectorAll(".sala")
 .forEach(function(item){
 
-item.classList.remove("selecionada");
+item.classList.remove(
+    "selecionada"
+);
 
 });
 
-elemento.classList.add("selecionada");
+
+elemento.classList.add(
+    "selecionada"
+);
+
 
 setTimeout(function(){
 
@@ -2942,7 +3114,9 @@ document
 .getElementById("nomeAluno")
 .value="";
 
+
 mostrarTela("telaNome");
+
 
 setTimeout(function(){
 
@@ -2962,53 +3136,78 @@ document
 function verificarNome(){
 
 const campo =
-document.getElementById("nomeAluno");
+document.getElementById(
+    "nomeAluno"
+);
+
 
 const nome =
 campo.value.trim();
 
+
 if(nome===""){
 
-alert("Digite seu nome e sobrenome.");
+mostrarPopup(
+    "Digite seu nome e sobrenome.",
+    "erro",
+    "⚠️"
+);
 
 campo.focus();
 
 return;
 
 }
+
 
 const partes =
 nome.split(/\s+/);
 
+
 if(partes.length<2){
 
-alert("Digite seu nome e sobrenome.");
+mostrarPopup(
+    "Digite seu nome e sobrenome.",
+    "erro",
+    "⚠️"
+);
 
 campo.focus();
 
 return;
 
 }
+
 
 if(nome.length<5){
 
-alert("O nome informado é muito curto.");
+mostrarPopup(
+    "O nome informado é muito curto.",
+    "erro",
+    "⚠️"
+);
 
 campo.focus();
 
 return;
 
 }
+
 
 const nomeMinusculo =
 nome.toLowerCase();
 
+
 for(let palavra of palavrasImproprias){
 
-if(nomeMinusculo.includes(palavra)){
+if(
+    nomeMinusculo.includes(palavra)
+){
 
-alert(
-"⚠️ Esse nome não pode ser utilizado. Por favor, informe um nome apropriado."
+mostrarPopup(
+    "Esse nome não pode ser utilizado.",
+    "erro",
+    "🚫"
 );
 
 campo.value="";
@@ -3021,18 +3220,28 @@ return;
 
 }
 
+
 nomeSelecionado=nome;
 
-document
-.getElementById("nomeConfirmacao")
-.textContent=nomeSelecionado;
 
 document
-.getElementById("salaConfirmacao")
+.getElementById(
+    "nomeConfirmacao"
+)
+.textContent=nomeSelecionado;
+
+
+document
+.getElementById(
+    "salaConfirmacao"
+)
 .textContent=
 "Sala: "+salaSelecionada;
 
-mostrarTela("telaConfirmacao");
+
+mostrarTela(
+    "telaConfirmacao"
+);
 
 }
 
@@ -3045,11 +3254,27 @@ function logarAluno(){
 
 cargoSelecionado="Aluno";
 
+
 atualizarPerfilUsuario();
+
 
 configurarCardapioAluno();
 
-mostrarTela("telaCardapio");
+
+mostrarTela(
+    "telaCardapio"
+);
+
+
+/* POPUP PERSONALIZADO */
+
+mostrarPopup(
+    "Você "+nomeSelecionado+
+    " entrou como aluno da sala "+
+    salaSelecionada+"!",
+    "sucesso",
+    "🎓"
+);
 
 }
 
@@ -3065,18 +3290,24 @@ document
 .textContent=
 "Você vai almoçar na escola hoje?";
 
+
 document
 .getElementById("subtituloCardapio")
 .textContent=
 "Confira o cardápio e faça sua escolha!";
 
+
 document
 .getElementById("cardapioMerenda")
 .style.display="block";
 
+
 document
-.getElementById("btnConfirmarPresenca")
+.getElementById(
+    "btnConfirmarPresenca"
+)
 .style.display="block";
+
 
 resetarCardapio();
 
@@ -3094,18 +3325,24 @@ document
 .textContent=
 "Você vai pedir salgado hoje?";
 
+
 document
 .getElementById("subtituloCardapio")
 .textContent=
 "Escolha seus salgados para hoje!";
 
+
 document
 .getElementById("cardapioMerenda")
 .style.display="none";
 
+
 document
-.getElementById("btnConfirmarPresenca")
+.getElementById(
+    "btnConfirmarPresenca"
+)
 .style.display="none";
+
 
 resetarCardapio();
 
@@ -3135,7 +3372,9 @@ document
 )
 .forEach(function(el){
 
-el.classList.remove("bloqueado");
+el.classList.remove(
+    "bloqueado"
+);
 
 });
 
@@ -3148,10 +3387,16 @@ document
 )
 .forEach(function(el){
 
-el.classList.remove("selecionada");
+el.classList.remove(
+    "selecionada"
+);
+
 
 const quantidade =
-el.querySelector(".quantidade span");
+el.querySelector(
+    ".quantidade span"
+);
+
 
 if(quantidade){
 
@@ -3162,31 +3407,38 @@ quantidade.textContent="1";
 });
 
 
-/* ESCONDE TUDO */
+/* ESCONDE */
 
 document
 .getElementById("secaoEscolha")
 .classList.remove("visivel");
 
+
 document
 .getElementById("secaoSalgados")
 .classList.remove("visivel");
+
 
 document
 .getElementById("secaoBebidas")
 .classList.remove("visivel");
 
+
 document
 .getElementById("resumo")
 .classList.remove("visivel");
+
 
 document
 .getElementById("escolhaNada")
 .classList.remove("visivel");
 
+
 document
 .getElementById("opcaoNada")
-.classList.remove("selecionada");
+.classList.remove(
+    "selecionada"
+);
 
 
 document
@@ -3194,9 +3446,9 @@ document
 .style.display="none";
 
 
-/* ALUNO COMEÇA COM MERENDA VISÍVEL */
-
-if(cargoSelecionado==="Aluno"){
+if(
+    cargoSelecionado==="Aluno"
+){
 
 document
 .getElementById("cardapioMerenda")
@@ -3221,32 +3473,37 @@ function atualizarPerfilUsuario(){
 
 const infoTopo =
 document.getElementById(
-"infoUsuarioTopo"
+    "infoUsuarioTopo"
 );
+
 
 const botaoPerfil =
 document.getElementById(
-"botaoPerfil"
+    "botaoPerfil"
 );
+
 
 const icone =
 document.getElementById(
-"iconeUsuarioTopo"
+    "iconeUsuarioTopo"
 );
+
 
 const nomeTopo =
 document.getElementById(
-"nomeUsuarioTopo"
+    "nomeUsuarioTopo"
 );
+
 
 const cargoTopo =
 document.getElementById(
-"cargoUsuarioTopo"
+    "cargoUsuarioTopo"
 );
+
 
 const salaTopo =
 document.getElementById(
-"salaUsuarioTopo"
+    "salaUsuarioTopo"
 );
 
 
@@ -3263,7 +3520,9 @@ cargoTopo.textContent =
 cargoSelecionado;
 
 
-if(cargoSelecionado==="Professor"){
+if(
+    cargoSelecionado==="Professor"
+){
 
 icone.textContent="👨‍🏫";
 
@@ -3288,10 +3547,12 @@ document
 .textContent=
 nomeSelecionado || "Usuário";
 
+
 document
 .getElementById("perfilCargo")
 .textContent=
 cargoSelecionado;
+
 
 document
 .getElementById("perfilAvatar")
@@ -3300,10 +3561,12 @@ cargoSelecionado==="Professor"
 ?"👨‍🏫"
 :"🎓";
 
+
 document
 .getElementById("perfilNomeDado")
 .textContent=
 nomeSelecionado || "-";
+
 
 document
 .getElementById("perfilCargoDado")
@@ -3315,10 +3578,13 @@ cargoSelecionado;
 
 const salaContainer =
 document.getElementById(
-"perfilSalaDadoContainer"
+    "perfilSalaDadoContainer"
 );
 
-if(cargoSelecionado==="Professor"){
+
+if(
+    cargoSelecionado==="Professor"
+){
 
 salaContainer.style.display="none";
 
@@ -3344,7 +3610,9 @@ function abrirPerfil(){
 
 document
 .getElementById("overlayPerfil")
-.classList.add("visivel");
+.classList.add(
+    "visivel"
+);
 
 }
 
@@ -3357,17 +3625,23 @@ function fecharPerfil(){
 
 document
 .getElementById("overlayPerfil")
-.classList.remove("visivel");
+.classList.remove(
+    "visivel"
+);
 
 }
 
+
+/* =========================================
+   FECHAR CLICANDO FORA
+========================================= */
 
 function fecharPerfilFora(event){
 
 if(
 event.target===
 document.getElementById(
-"overlayPerfil"
+    "overlayPerfil"
 )
 ){
 
@@ -3384,15 +3658,29 @@ fecharPerfil();
 
 function fazerLogout(){
 
-const confirmar =
-confirm(
-"Tem certeza que deseja sair da conta?"
-);
-
-if(!confirmar)return;
-
+/*
+   PRIMEIRO:
+   fecha o menu de perfil.
+*/
 
 fecharPerfil();
+
+
+/*
+   Pequeno atraso visual para o
+   popup aparecer depois que o menu
+   desaparecer.
+*/
+
+setTimeout(function(){
+
+mostrarPopup(
+    "Você saiu da conta com sucesso!",
+    "info",
+    "🚪"
+);
+
+},150);
 
 
 serieSelecionada="";
@@ -3413,45 +3701,55 @@ bebidasEscolhidas=[];
 modoFinalizado=false;
 
 
+/* ESCONDE PERFIL DO TOPO */
+
 document
 .getElementById(
-"infoUsuarioTopo"
+    "infoUsuarioTopo"
 )
 .style.display="none";
 
 
 document
 .getElementById(
-"botaoPerfil"
+    "botaoPerfil"
 )
 .style.display="none";
 
 
+/* LIMPA CAMPOS */
+
 document
 .getElementById(
-"codigoProfessor"
+    "codigoProfessor"
 )
 .value="";
 
 
 document
 .getElementById(
-"nomeProfessor"
+    "nomeProfessor"
 )
 .value="";
 
 
 document
 .getElementById(
-"nomeAluno"
+    "nomeAluno"
 )
 .value="";
 
+
+/* LIMPA CARDÁPIO */
 
 resetarCardapio();
 
 
-mostrarTela("telaInicial");
+/* VOLTA PARA INÍCIO */
+
+mostrarTela(
+    "telaInicial"
+);
 
 }
 
@@ -3480,10 +3778,12 @@ document
 )
 .forEach(function(el){
 
-el.classList.remove("selecionada");
+el.classList.remove(
+    "selecionada"
+);
 
 el.querySelector(
-".quantidade span"
+    ".quantidade span"
 ).textContent="1";
 
 });
@@ -3493,15 +3793,23 @@ el.querySelector(
 
 document
 .getElementById("resumo")
-.classList.remove("visivel");
+.classList.remove(
+    "visivel"
+);
+
 
 document
 .getElementById("escolhaNada")
-.classList.remove("visivel");
+.classList.remove(
+    "visivel"
+);
+
 
 document
 .getElementById("opcaoNada")
-.classList.remove("selecionada");
+.classList.remove(
+    "selecionada"
+);
 
 
 vaiAlmocar=resposta;
@@ -3511,7 +3819,9 @@ vaiAlmocar=resposta;
    PROFESSOR
 ========================================= */
 
-if(cargoSelecionado==="Professor"){
+if(
+    cargoSelecionado==="Professor"
+){
 
 document
 .getElementById("secaoNada")
@@ -3524,6 +3834,7 @@ document
 .getElementById("secaoSalgados")
 .classList.add("visivel");
 
+
 document
 .getElementById("secaoBebidas")
 .classList.add("visivel");
@@ -3537,17 +3848,21 @@ document
 .getElementById("secaoSalgados")
 .classList.remove("visivel");
 
+
 document
 .getElementById("secaoBebidas")
 .classList.remove("visivel");
+
 
 document
 .getElementById("resumo")
 .classList.remove("visivel");
 
+
 document
 .getElementById("secaoNada")
 .style.display="block";
+
 
 return;
 
@@ -3555,16 +3870,10 @@ return;
 
 
 /* =========================================
-   ALUNO
+   ALUNO SIM
 ========================================= */
 
 if(resposta==="sim"){
-
-/*
-   CORREÇÃO:
-   O cardápio NÃO desaparece.
-   Ele continua visível para o aluno.
-*/
 
 document
 .getElementById("cardapioMerenda")
@@ -3637,19 +3946,24 @@ document
    SELECIONAR ITEM
 ========================================= */
 
-function toggleItem(elemento,tipo){
+function toggleItem(
+    elemento,
+    tipo
+){
 
 if(modoFinalizado)return;
 
 
 const lista =
 tipo==="salgado"
-?salgadosEscolhidos
-:bebidasEscolhidas;
+?
+salgadosEscolhidos
+:
+bebidasEscolhidas;
 
 
 elemento.classList.toggle(
-"selecionada"
+    "selecionada"
 );
 
 
@@ -3661,7 +3975,7 @@ elemento.childNodes[0]
 
 if(
 elemento.classList.contains(
-"selecionada"
+    "selecionada"
 )
 ){
 
@@ -3680,19 +3994,25 @@ lista.findIndex(
 item=>item.nome===nome
 );
 
+
 if(indice!==-1){
 
-lista.splice(indice,1);
+lista.splice(
+    indice,
+    1
+);
 
 }
 
+
 elemento
 .querySelector(
-".quantidade span"
+    ".quantidade span"
 )
 .textContent="1";
 
 }
+
 
 atualizarResumo();
 
@@ -3704,12 +4024,13 @@ atualizarResumo();
 ========================================= */
 
 function alterarQuantidade(
-event,
-botao,
-valor
+    event,
+    botao,
+    valor
 ){
 
 event.stopPropagation();
+
 
 if(modoFinalizado)return;
 
@@ -3720,23 +4041,27 @@ botao.closest(".opcao");
 
 if(
 !elemento.classList.contains(
-"selecionada"
+    "selecionada"
 )
 )return;
 
 
 const tipo =
 elemento.classList.contains(
-"item-salgado"
+    "item-salgado"
 )
-?"salgado"
-:"bebida";
+?
+"salgado"
+:
+"bebida";
 
 
 const lista =
 tipo==="salgado"
-?salgadosEscolhidos
-:bebidasEscolhidas;
+?
+salgadosEscolhidos
+:
+bebidasEscolhidas;
 
 
 const nome =
@@ -3766,7 +4091,7 @@ item.quantidade=1;
 
 elemento
 .querySelector(
-".quantidade span"
+    ".quantidade span"
 )
 .textContent=
 item.quantidade;
@@ -3790,7 +4115,9 @@ bebidasEscolhidas.length===0
 
 document
 .getElementById("resumo")
-.classList.remove("visivel");
+.classList.remove(
+    "visivel"
+);
 
 return;
 
@@ -3841,7 +4168,9 @@ bebidasHTML ||
 
 document
 .getElementById("resumo")
-.classList.add("visivel");
+.classList.add(
+    "visivel"
+);
 
 }
 
@@ -3882,8 +4211,12 @@ document
 bloquearTudo();
 
 
-alert(
-"Presença confirmada com sucesso! 🍛"
+/* POPUP VERDE */
+
+mostrarPopup(
+    "Você confirmou sua presença!",
+    "sucesso",
+    "✔️"
 );
 
 }
@@ -3905,11 +4238,11 @@ document
 .forEach(function(el){
 
 el.classList.remove(
-"selecionada"
+    "selecionada"
 );
 
 el.querySelector(
-".quantidade span"
+    ".quantidade span"
 ).textContent="1";
 
 });
@@ -3922,13 +4255,15 @@ bebidasEscolhidas=[];
 
 document
 .getElementById("resumo")
-.classList.remove("visivel");
+.classList.remove(
+    "visivel"
+);
 
 
 document
 .getElementById("opcaoNada")
 .classList.toggle(
-"selecionada"
+    "selecionada"
 );
 
 
@@ -3936,14 +4271,14 @@ if(
 document
 .getElementById("opcaoNada")
 .classList.contains(
-"selecionada"
+    "selecionada"
 )
 ){
 
 document
 .getElementById("escolhaNada")
 .classList.add(
-"visivel"
+    "visivel"
 );
 
 }else{
@@ -3951,7 +4286,7 @@ document
 document
 .getElementById("escolhaNada")
 .classList.remove(
-"visivel"
+    "visivel"
 );
 
 }
@@ -3971,8 +4306,10 @@ if(modoFinalizado)return;
 modoFinalizado=true;
 
 
-alert(
-"Resposta enviada com sucesso! 🚫"
+mostrarPopup(
+    "Resposta enviada com sucesso!",
+    "sucesso",
+    "✔️"
 );
 
 
@@ -3995,8 +4332,10 @@ salgadosEscolhidos.length===0 &&
 bebidasEscolhidas.length===0
 ){
 
-alert(
-"Escolha pelo menos um salgado ou uma bebida."
+mostrarPopup(
+    "Escolha pelo menos um salgado ou uma bebida.",
+    "erro",
+    "⚠️"
 );
 
 return;
@@ -4007,8 +4346,10 @@ return;
 modoFinalizado=true;
 
 
-alert(
-"Pedido feito com sucesso! 📦"
+mostrarPopup(
+    "Pedido feito com sucesso!",
+    "sucesso",
+    "📦"
 );
 
 
@@ -4029,7 +4370,9 @@ document
 )
 .forEach(function(el){
 
-el.classList.add("bloqueado");
+el.classList.add(
+    "bloqueado"
+);
 
 });
 
@@ -4037,7 +4380,7 @@ el.classList.add("bloqueado");
 
 
 /* =========================================
-   VOLTAR
+   VOLTAR INÍCIO
 ========================================= */
 
 function voltarInicio(){
@@ -4050,58 +4393,38 @@ nomeSelecionado="";
 
 cargoSelecionado="Aluno";
 
-mostrarTela("telaInicial");
+
+mostrarTela(
+    "telaInicial"
+);
 
 }
 
+
+/* =========================================
+   VOLTAR CÓDIGO PROFESSOR
+========================================= */
 
 function voltarProfessorCodigo(){
 
 document
-.getElementById("nomeProfessor")
+.getElementById(
+    "nomeProfessor"
+)
 .value="";
 
+
 mostrarTela(
-"telaProfessorCodigo"
+    "telaProfessorCodigo"
 );
 
-setTimeout(function(){
-
-document
-.getElementById("codigoProfessor")
-.focus();
-
-},100);
-
-}
-
-
-function voltarSeries(){
-
-salaSelecionada="";
-
-mostrarTela("telaSeries");
-
-}
-
-
-function voltarSalas(){
-
-nomeSelecionado="";
-
-mostrarTela("telaSalas");
-
-}
-
-
-function voltarNome(){
-
-mostrarTela("telaNome");
 
 setTimeout(function(){
 
 document
-.getElementById("nomeAluno")
+.getElementById(
+    "codigoProfessor"
+)
 .focus();
 
 },100);
@@ -4110,7 +4433,61 @@ document
 
 
 /* =========================================
-   ENTER
+   VOLTAR SÉRIES
+========================================= */
+
+function voltarSeries(){
+
+salaSelecionada="";
+
+mostrarTela(
+    "telaSeries"
+);
+
+}
+
+
+/* =========================================
+   VOLTAR SALAS
+========================================= */
+
+function voltarSalas(){
+
+nomeSelecionado="";
+
+mostrarTela(
+    "telaSalas"
+);
+
+}
+
+
+/* =========================================
+   VOLTAR NOME
+========================================= */
+
+function voltarNome(){
+
+mostrarTela(
+    "telaNome"
+);
+
+
+setTimeout(function(){
+
+document
+.getElementById(
+    "nomeAluno"
+)
+.focus();
+
+},100);
+
+}
+
+
+/* =========================================
+   ENTER ALUNO
 ========================================= */
 
 document
@@ -4128,6 +4505,10 @@ verificarNome();
 });
 
 
+/* =========================================
+   ENTER PROFESSOR
+========================================= */
+
 document
 .getElementById("nomeProfessor")
 .addEventListener(
@@ -4142,6 +4523,10 @@ verificarNomeProfessor();
 
 });
 
+
+/* =========================================
+   ENTER CÓDIGO
+========================================= */
 
 document
 .getElementById("codigoProfessor")
